@@ -1,1 +1,39 @@
 # sisopslab5
+
+ - **Funcionamiento y sintaxis de uso de structs.**
+   - Permite el acceso y almacenamiento de múltiples valores dentro de una estructura asignada a un mismo puntero.
+ - **Propósito y directivas del preprocesador.**
+   - directivas o pragmas sirven para dar instrucciones directas al procesador (por ej. almacenar algo directamente en cache)
+ - **Diferencia entre * y & en el manejo de referencias a memoria (punteros).**
+   - `*` se refiere a un puntero, mientras que `&` es una referencia a un puntero
+ - **Propósito y modo de uso de APT y dpkg**
+   - APT/dpkg son manejadores de paquetes para distintos distros de Linux. 
+ - **¿Cuál es el propósito de los archivos sched.h modificados?**
+   - sched.h contiene los valores usados para los algoritmos de calendarización.
+ - **¿Cuál es el propósito de la definición incluida y las definiciones existentes en el archivo?**
+   - Como fue mencionado anteriormente, son usados por cada distro de Linux para calendarización.
+ - **¿Qué es una tasken Linux?**
+   - Es una unidad de ejecución, esta comparte recursos con otros tasks del sistema.
+ - **¿Cuál es el propósito de task_struct y cuál es su análogo en Windows?**
+   - `task_struct` es el struct que contiene toda la información que necesita el kernel para poder manejar un task. Corriendo en Linux 32b pesa ~1.7Kb
+ - **¿Qué información contiene sched_param?**
+   - Es el struct que define los parametros usados para calendarización 
+ - **¿Para qué sirve la función rt_policy y para qué sirve la llamada unlikely en ella?**
+   - `rt_policy` valida el tipo de calendarización vs `SCHED_FIFO` o `SCHED_RR`. `unlikely` es una función que le indica al compilador que genere predicciónes
+ - **¿Qué tipo de tareas calendariza la política EDF, en vista del método modificado?**
+   - EDF le da prioridad al proceso que tenga la menor cantidad de tiempo de procesamiento restante.
+ - **Describala precedencia de prioridades para las políticas EDF, RT y CFS, de acuerdo con los cambios realizados hasta ahora.**
+   - EDF le da prioridad a los procesos que tienen menor cantidad de procesamiento restante
+   - RT le da prioridad a los procesos en base a su monitoreo en tiempo real (Real Time)
+   - CFS significa “Completely Fair Scheduler”. Esta política implementa múltiples técnicas para asegurar el mejor funcionamiento multitasking para un CPU. 
+ - **Explique el contenido de la estructura casio_task**
+   - `casio_task` define la política para un calendarizador. Incluye un `rb_node casio_rb_node` que representa el nodo de de un arbol red&black 
+ - **Explique el propósito y contenido de la estructura casio_rq**
+   - `casio_rq` es el tipo de dato (struct) manejado por el calendarizador para ordenar tasks 
+ - **¿Qué  es  y  para  qué  sirve  el  tipo atomic_t?  Describa  brevemente  los  conceptos  de operaciones RMW (read-modify-write) y mappe ode dispositivos en memoria (MMIO).**
+   - `atomic_t` es un contador. 
+ - **¿Qué indica el campo .next de esta estructura?**
+   - El tipo de calendarizador en uso
+ - **¿Por   quéseguardan   las casio_tasksen un red-black tree y en una lista encadenada?**
+   - El árbol R&B se mantiene balanceado, la lista encadenada asegura linealidad de ejecución
+ 
